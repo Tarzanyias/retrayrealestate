@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retray Real Estate</title>
+    <!-- Favicon link points to the Images directory -->
+    <link rel="icon" type="image/png" href="Images/favicon.png">
+    <!-- Note: This is an external link for the Font Awesome icons. It is best practice to keep this external. -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Global Styles */
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--primary);
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            font-size: 1.1rem;
+            color: #777;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-img {
+            height: 50px;
+            width: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5px;
+        }
+        
+        .logo-img img {
+            height: 100%;
+            width: auto;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        nav ul li a:hover, 
+        nav ul li a.active {
+            color: var(--secondary);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Newsletter Subscription Bar */
+        .newsletter-bar {
+            background: var(--secondary);
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            position: relative;
+            margin-top: 80px;
+        }
+        
+        .newsletter-bar p {
+            display: inline-block;
+            margin-right: 15px;
+        }
+        
+        .newsletter-bar a {
+            color: white;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        
+        .close-newsletter-bar {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('Images/hero-bg.jpg'); /* Local image path */
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-img {
+            height: 200px;
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .service-content {
+            padding: 20px;
+        }
+        
+        .service-content h3 {
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        /* About Section */
+        .about {
+            background-color: var(--light);
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-img {
+            flex: 1;
+            height: 400px;
+            background: #ddd;
+            border-radius: 8px;
+            background: url('Images/about-section.jpg'); /* Local image path */
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 8px;
+        }
+        
+        .testimonial-card p {
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        
+        .client {
+            display: flex;
+            align-items: center;
+        }
+        
+        .client-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #ddd;
+            margin-right: 15px;
+        }
+        
+        /* Contact Form */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-page-form-container {
+            max-width: 600px;
+            margin-top: 50px;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+        }
+        
+        /* Founder Section */
+        .founder-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .founder-img {
+            flex: 1;
+            height: 400px;
+            background: #ddd;
+            border-radius: 8px;
+            background: url('Images/founder.jpg'); /* Local image path */
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .founder-text {
+            flex: 1;
+        }
+        
+        /* Why Retray Section */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature {
+            text-align: center;
+            padding: 30px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature i {
+            font-size: 3rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bbb;
+        }
+        
+        /* Page Sections (initially hidden) */
+        .page-section {
+            display: none;
+            padding-top: 120px;
+            min-height: 100vh;
+        }
+        
+        .page-section.active {
+            display: block;
+        }
+        
+        /* Newsletter Popup */
+        .newsletter-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+            z-index: 2000;
+            width: 90%;
+            max-width: 500px;
+            display: none;
+            text-align: center;
+            /* Added for smooth pop-up */
+            max-height: 90vh; 
+            overflow: auto;
+        }
+        
+        .newsletter-popup.active {
+            display: block;
+        }
+        
+        .newsletter-popup h3 {
+            margin-bottom: 15px;
+            color: var(--primary);
+            font-size: 1.8rem;
+            text-align: center;
+        }
+
+        .newsletter-popup p {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .newsletter-popup .benefits-list {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .newsletter-popup .benefits-list li {
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .newsletter-popup .benefits-list i {
+            color: var(--secondary);
+            margin-right: 10px;
+        }
+        
+        .close-popup {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1500;
+            display: none;
+        }
+        
+        .overlay.active {
+            display: block;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-content, .founder-content {
+                flex-direction: column;
+            }
+            
+            .about-img, .founder-img {
+                width: 100%;
+                margin-bottom: 30px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+            
+            nav ul.show {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .logo-img {
+                height: 40px;
+            }
+            
+            .newsletter-bar {
+                padding: 10px 30px 10px 10px;
+            }
+            
+            .newsletter-bar p {
+                display: block;
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+        }
+        
+        /* Specific Styles for Newsletter Checkbox */
+        .form-group.checkbox-group label {
+            display: flex;
+            align-items: center;
+            /* Removed gap to make the checkbox and text closer */
+            cursor: pointer;
+        }
+
+        .form-group.checkbox-group input[type="checkbox"] {
+            margin-right: 4px; /* A minimal space between the checkbox and the text */
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            padding-left: 20px; /* Added left padding for 'one space of space' */
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Newsletter Popup -->
+    <div class="overlay" id="popupOverlay"></div>
+    <div class="newsletter-popup" id="newsletterPopup">
+        <span class="close-popup" id="closePopup">&times;</span>
+        <i class="fas fa-envelope" style="font-size: 3rem; color: var(--secondary); margin-bottom: 20px;"></i>
+        <h3>Unlock Expert Real Estate Insights</h3>
+        <p>Get our exclusive monthly newsletter delivered straight to your inbox.</p>
+        <ul class="benefits-list">
+            <li><i class="fas fa-check-circle"></i> Monthly market updates and trends</li>
+            <li><i class="fas fa-check-circle"></i> Exclusive investment opportunities</li>
+            <li><i class="fas fa-check-circle"></i> Tips to maximize your property value</li>
+        </ul>
+        <form action="#" method="POST" id="newsletterForm">
+            <div class="form-group">
+                <label for="newsletter-email">Email Address</label>
+                <input type="email" id="newsletter-email" required>
+            </div>
+            <div class="form-group">
+                <label for="newsletter-name">Name (Optional)</label>
+                <input type="text" id="newsletter-name">
+            </div>
+            <button type="submit" class="btn">Subscribe Now</button>
+        </form>
+    </div>
+
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container header-container">
+            <div class="logo-container">
+                <div class="logo-img">
+                    <!-- Updated to use your custom logo.png file from the Images directory -->
+                    <img src="Images/logo.png" alt="Retray Logo">
+                </div>
+            </div>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav>
+                <ul id="nav-menu">
+                    <li><a href="#" class="active" data-page="home">Home</a></li>
+                    <li><a href="#" data-page="about">Why Retray</a></li>
+                    <li><a href="#" data-page="founder">Our Founder</a></li>
+                    <li><a href="#" data-page="contact">Contact Us</a></li>
+                    <li><a href="#" data-page="newsletter">Newsletter</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Newsletter Subscription Bar -->
+    <div class="newsletter-bar" id="newsletterBar">
+        <p>Subscribe to our newsletter for the latest updates</p>
+        <a id="newsletterLink">Click here to subscribe</a>
+        <span class="close-newsletter-bar" id="closeNewsletterBar">&times;</span>
+    </div>
+
+    <!-- Home Page -->
+    <section id="home" class="page-section active">
+        <div class="hero">
+            <div class="container hero-content">
+                <h1>Excellence in Real Estate Management</h1>
+                <p>Trust Retray to maximize your property's potential with our comprehensive management solutions and industry expertise.</p>
+                <a href="#" class="btn" data-page="contact">Get In Touch</a>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <p>Comprehensive real estate management solutions tailored to your needs</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('Images/property-management.jpg');"></div>
+                    <div class="service-content">
+                        <h3>Property Management</h3>
+                        <p>Complete oversight of your residential or commercial properties, including maintenance, tenant relations, and financial reporting.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('Images/real-estate-investment.jpg');"></div>
+                    <div class="service-content">
+                        <h3>Real Estate Investment</h3>
+                        <p>Strategic investment guidance to help you build and optimize your real estate portfolio for maximum returns.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('Images/leasing-marketing.jpg');"></div>
+                    <div class="service-content">
+                        <h3>Leasing & Marketing</h3>
+                        <p>Comprehensive marketing strategies and leasing services to minimize vacancy periods and attract quality tenants.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="about">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-img"></div>
+                    <div class="about-text">
+                        <h2>About Retray Real Estate</h2>
+                        <p>Founded in 2005, Retray Real Estate Management has established itself as a leader in the property management industry. Our commitment to excellence, innovation, and client satisfaction has made us the preferred choice for property owners and investors.</p>
+                        <p>With a portfolio spanning residential, commercial, and industrial properties, we bring expertise and dedication to every client relationship. Our team of experienced professionals utilizes cutting-edge technology and proven strategies to maximize your investment returns.</p>
+                        <a href="#" class="btn" data-page="about">Learn More About Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="section-title">
+                <h2>What Our Clients Say</h2>
+                <p>Hear from property owners who have experienced the Retray difference</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p>"Retray transformed my rental property from a constant headache to a seamless source of income. Their professional team handles everything efficiently."</p>
+                    <div class="client">
+                        <div class="client-img"></div>
+                        <div>
+                            <h4>Michael Thompson</h4>
+                            <p>Property Owner</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p>"The investment guidance I received from Retray helped me build a diverse real estate portfolio that continues to generate wealth year after year."</p>
+                    <div class="client">
+                        <div class="client-img"></div>
+                        <div>
+                            <h4>Sarah Johnson</h4>
+                            <p>Real Estate Investor</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p>"As a commercial property owner, I appreciate Retray's attention to detail and their ability to maintain high occupancy rates even in challenging markets."</p>
+                    <div class="client">
+                        <div class="client-img"></div>
+                        <div>
+                            <h4>Robert Williams</h4>
+                            <p>Commercial Property Owner</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Retray Page -->
+    <section id="about" class="page-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Retray</h2>
+                <p>Discover what sets us apart in the competitive real estate management industry</p>
+            </div>
+            
+            <div class="features">
+                <div class="feature">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Proven Results</h3>
+                    <p>We consistently deliver above-market returns for our clients through strategic management and optimization.</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-users"></i>
+                    <h3>Expert Team</h3>
+                    <p>Our professionals bring decades of combined experience in all aspects of real estate management.</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-tools"></i>
+                    <h3>Comprehensive Solutions</h3>
+                    <p>From maintenance to financial reporting, we handle every detail so you don't have to.</p>
+                </div>
+            </div>
+            
+            <div class="about-content" style="margin-top: 50px;">
+                <div class="about-text">
+                    <h2>Our Approach</h2>
+                    <p>At Retray, we believe that successful property management requires a proactive rather than reactive approach. We utilize data-driven strategies to anticipate market trends and position your properties for success.</p>
+                    <p>Our proprietary technology platform provides real-time insights into property performance, maintenance needs, and financial metrics, allowing us to make informed decisions that maximize your returns.</p>
+                    <p>We maintain rigorous standards for tenant screening, property maintenance, and financial management, ensuring that your investment is protected and optimized at all times.</p>
+                </div>
+                <div class="about-img" style="background-image: url('Images/why-retray.jpg');"></div>
+            </div>
+            
+            <div class="section-title" style="margin-top: 50px;">
+                <h2>Our Numbers Speak</h2>
+                <p>The results we've achieved for our clients</p>
+            </div>
+            
+            <div class="features">
+                <div class="feature">
+                    <h3 style="font-size: 2.5rem; color: var(--secondary);">98%</h3>
+                    <p>Client Retention Rate</p>
+                </div>
+                <div class="feature">
+                    <h3 style="font-size: 2.5rem; color: var(--secondary);">759</h3>
+                    <p>Assets Under Management</p>
+                </div>
+                <div class="feature">
+                    <h3 style="font-size: 2.5rem; color: var(--secondary);">20+</h3>
+                    <p>Years of Experience</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Founder Page -->
+    <section id="founder" class="page-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Founder</h2>
+                <p>The vision behind Retray Real Estate Management</p>
+            </div>
+            
+            <div class="founder-content">
+                <div class="founder-img"></div>
+                <div class="founder-text">
+                    <h2>Yahya Maruf</h2>
+                    <h4>CEO & Founder</h4>
+                    <p>Yahya Maruf founded Retray in 2005 at just 21 years old with a vision to transform the real estate management industry through transparency, innovation, and exceptional service. Now 26, Yahya brings fresh perspectives and tech-driven solutions to the real estate sector.</p>
+                    <p>Under his leadership, Retray has grown from a small local operation to a widely recognized firm managing 759 real estate assets. Yahya's innovative approach and commitment to excellence continue to drive the company's success and reputation in the industry.</p>
+                    <p>Yahya holds a degree in Business Administration and is a frequent speaker at real estate investment conferences nationwide. He is deeply committed to mentoring the next generation of real estate professionals and promoting ethical standards in the industry.</p>
+                    <blockquote>
+                        "Our mission at Retray is to redefine property management through innovation, integrity, and exceptional service. We don't just manage properties; we build partnerships that create lasting value for our clients."
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Us Page -->
+    <section id="contact" class="page-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <p>Reach out to discuss how we can help with your real estate needs</p>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Get In Touch</h3>
+                    <p>Our team is ready to answer your questions and discuss how Retray can maximize the return on your real estate investment.</p>
+                    
+                    <div style="margin-top: 30px;">
+                        <h4>Contact Information</h4>
+                        <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+                        <p><i class="fas fa-envelope"></i> info@retray.com</p>
+                    </div>
+
+                    <div class="contact-form">
+                        <h3>Send Us a Message</h3>
+                        <form action="#" method="POST" id="contactForm">
+                            <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Your Message</label>
+                                <textarea id="message" name="message" required></textarea>
+                            </div>
+                            <button type="submit" class="btn">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Page -->
+    <section id="newsletter" class="page-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Subscribe to Our Newsletter</h2>
+                <p>Stay updated with the latest real estate trends and investment opportunities</p>
+            </div>
+            
+            <div class="contact-form">
+                <form action="#" method="POST" id="newsletterPageForm">
+                    <div class="form-group">
+                        <label for="newsletter-name-page">Name</label>
+                        <input type="text" id="newsletter-name-page" name="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="newsletter-email-page">Email Address *</label>
+                        <input type="email" id="newsletter-email-page" name="email" required>
+                    </div>
+                    <!-- The checkbox group has been updated with new styling -->
+                    <div class="form-group checkbox-group">
+                        <label>
+                            <input type="checkbox" required> 
+                            I agree to receive newsletter emails from Retray
+                        </label>
+                    </div>
+                    <button type="submit" class="btn">Subscribe</button>
+                </form>
+                
+                <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee;">
+                    <h3>What to expect in our newsletter:</h3>
+                    <ul style="margin-left: 20px; margin-top: 15px;">
+                        <li>Monthly market updates and trends</li>
+                        <li>Investment opportunities</li>
+                        <li>Property management tips</li>
+                        <li>Exclusive event invitations</li>
+                        <li>Industry insights from our founder</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <div class="logo-img" style="background: transparent; margin-bottom: 15px;">
+                        <!-- Updated to use your custom logo.png file from the Images directory -->
+                        <img src="Images/logo.png" alt="Retray Logo">
+                    </div>
+                    <p>Excellence in property management and real estate investment services since 2005.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Explore</h3>
+                    <ul>
+                        <li><a href="#" data-page="home">Home</a></li>
+                        <li><a href="#" data-page="about">Why Retray</a></li>
+                        <li><a href="#" data-page="founder">Our Founder</a></li>
+                        <li><a href="#" data-page="contact">Contact Us</a></li>
+                        <li><a href="#" data-page="newsletter">Newsletter</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#">Property Management</a></li>
+                        <li><a href="#">Real Estate Investment</a></li>
+                        <li><a href="#">Leasing & Marketing</a></li>
+                        <li><a href="#">Financial Reporting</a></li>
+                        <li><a href="#">Maintenance & Repairs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <p>Email: info@retray.com</p>
+                    <p>Phone: (555) 123-4567</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 Retray Real Estate Management. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript for interactivity
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- UI Element References ---
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navMenu = document.getElementById('nav-menu');
+            const navLinks = document.querySelectorAll('nav ul li a, .btn');
+            const pageSections = document.querySelectorAll('.page-section');
+            const newsletterBar = document.getElementById('newsletterBar');
+            const closeNewsletterBarBtn = document.getElementById('closeNewsletterBar');
+            const newsletterLink = document.getElementById('newsletterLink');
+            const newsletterPopup = document.getElementById('newsletterPopup');
+            const popupOverlay = document.getElementById('popupOverlay');
+            const closePopupBtn = document.getElementById('closePopup');
+
+            // --- Helper Functions ---
+
+            // Function to show a specific page section
+            const showPage = (pageId) => {
+                // Deactivate all sections
+                pageSections.forEach(section => {
+                    section.classList.remove('active');
+                });
+                // Activate the requested section
+                const activeSection = document.getElementById(pageId);
+                if (activeSection) {
+                    activeSection.classList.add('active');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            };
+
+            // Function to handle navigation link clicks
+            const handleNavigation = (e) => {
+                e.preventDefault();
+                const targetPage = e.currentTarget.getAttribute('data-page');
+                if (targetPage) {
+                    showPage(targetPage);
+                }
+
+                // Update active link class
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                });
+                // Add active class to the clicked link. Check for both nav and button links.
+                if (e.currentTarget.tagName === 'A') {
+                    e.currentTarget.classList.add('active');
+                } else {
+                    document.querySelector(`nav ul li a[data-page="${targetPage}"]`).classList.add('active');
+                }
+
+                // Close the mobile menu if it's open
+                if (navMenu.classList.contains('show')) {
+                    navMenu.classList.remove('show');
+                }
+            };
+
+            // --- Event Listeners ---
+            
+            // Mobile menu toggle
+            mobileMenuBtn.addEventListener('click', () => {
+                navMenu.classList.toggle('show');
+            });
+
+            // Page navigation
+            navLinks.forEach(link => {
+                link.addEventListener('click', handleNavigation);
+            });
+
+            // Close newsletter bar
+            closeNewsletterBarBtn.addEventListener('click', () => {
+                newsletterBar.style.display = 'none';
+            });
+
+            // Show newsletter popup
+            newsletterLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                newsletterPopup.classList.add('active');
+                popupOverlay.classList.add('active');
+            });
+
+            // Close newsletter popup
+            closePopupBtn.addEventListener('click', () => {
+                newsletterPopup.classList.remove('active');
+                popupOverlay.classList.remove('active');
+            });
+
+            // Hide popup when clicking overlay
+            popupOverlay.addEventListener('click', () => {
+                newsletterPopup.classList.remove('active');
+                popupOverlay.classList.remove('active');
+            });
+
+        });
+    </script>
+</body>
+</html>
